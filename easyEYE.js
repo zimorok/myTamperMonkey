@@ -1,14 +1,14 @@
 // ==UserScript==
 // @name         easyEye
 // @namespace    http://tampermonkey.net/
-// @version      0.1.1
+// @version      0.1.2
 // @description  Read your web novel easily on mobile with paginated content
 // @author       Zimorok
 // @match        *://boxnovel.com/*
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js
 // @grant        GM_addStyle
 // ==/UserScript==
-GM_addStyle(".btn-group button{background-color:#4caf50;border:1px solid green;color:#fff;padding:10px 24px;cursor:pointer;float:left;position:sticky;position:-webkit-sticky;bottom:0}.btn-group:after{content:"";clear:both;display:table}.btn-group button:not(:last-child){border-right:none}.btn-group button:hover{background-color:#3e8e41}");
+GM_addStyle(".btn-group button{background-color:#4caf50;border:1px solid green;color:#fff;padding:10px 24px;cursor:pointer;float:left;position:sticky;position:-webkit-sticky;bottom:0}.btn-group:after{content:'';clear:both;display:table}.btn-group button:not(:last-child){border-right:none}.btn-group button:hover{background-color:#3e8e41}");
 var $ = window.jQuery
 $(document).ready(function() {
     'use strict';
