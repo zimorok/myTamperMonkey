@@ -2,7 +2,7 @@
 // @name         easyEye
 // @namespace    http://tampermonkey.net/
 // @updateURL	 https://github.com/zimorok/myTamperMonkey/raw/master/easyEYE.js
-// @version      0.1.3
+// @version      0.1.4
 // @description  Read your web novel easily on mobile with paginated content
 // @author       Zimorok
 // @match        *://boxnovel.com/*
@@ -54,10 +54,7 @@ function paginate() {
 	//--append the next/previous button to <body>
 	var nav = '<div class="btn-group"><button href="#prev"><&laquo; Prev</button><button href="#next">Next &raquo;</button></div>';
 	$('body').append(nav);
-	for(var pn = 0; pn < $('div.page').length; pn++)
-	{
-		nav.append('<a href="#page_'+pn+'">'+pn+'</a>');
-	}
+
 	//--simple numbering and scroll-to 
 	$("a[href^='#']").click(function(e) {
 	e.preventDefault();
