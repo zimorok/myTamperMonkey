@@ -2,14 +2,14 @@
 // @name         easyEye
 // @namespace    http://tampermonkey.net/
 // @updateURL	 https://github.com/zimorok/myTamperMonkey/raw/master/easyEYE.js
-// @version      0.1.7
+// @version      0.1.8
 // @description  Read your web novel easily on mobile with paginated content
 // @author       Zimorok
 // @match        *://boxnovel.com/*
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js
 // @grant        GM_addStyle
 // ==/UserScript==
-GM_addStyle(".btn-group a{background-color:#4caf50;border:1px solid green;color:#fff;padding:5px 15px;cursor:pointer;float:left;position:fixed;bottom:0;left:0;right:0;display:inline-block}.btn-group:after{content:'';clear:both;display:table}.btn-group a:not(:last-child){border-right:none}.btn-group a:hover{background-color:#3e8e41}");
+GM_addStyle("#nav{width:100%;text-align:center;margin:0 auto;position:fixed;bottom:0;left:0;right:0}.subs{background-color:green}.subs button{height:30px}");
 var $ = window.jQuery
 $(document).ready(function() {
     'use strict';
@@ -26,7 +26,7 @@ $(document).ready(function() {
 var contentBox = $('div.text-left');
 var words = contentBox.html().split(' ');
 function paginate() {
-    var newPage = $('<div class="page">').css({'border':'1px solid black','text-align':'justify','padding':'5px'});
+    var newPage = $('<div class="page">').css({'border':'1px solid black','text-align':'justify','padding':'5px','margin-bottom':'30px'});
     contentBox.empty().append(newPage);
     var pageText = null;
     for(var i = 0; i < words.length; i++) {
@@ -45,25 +45,31 @@ function paginate() {
             pageText = betterPageText;
         }
     }
-    //--create the page ID and add the div.page
-	$('div.page').each(function(index){
-		$(this).prop('id','page_'+index);
-	});
 
 	//--creating next/previous button
 	//--append the next/previous button to <body>
-	var nav = '<div class="btn-group"><a href="#prev">&laquo; Prev</a><a href="#next">Next &raquo;</a></div>';
+	var nav = '<div id="nav"><div class="subs"><button href="#prev">&laquo; Prev</button><button href="#next">Next &raquo;</button></div></div>';
 	$('#story').append(nav);
 
-	//--simple numbering and scroll-to 
-	$("a[href^='#']").click(function(e) {
-	e.preventDefault();
-	
-	var position = $($(this).attr("href")).offset().top;
+	//--next button and scroll-to 
+	$("button #next").click(function(e) {
+		e.preventDefault();
+		
+		var position = $('div.page').next();
 
-	$("body, html").animate({
-		scrollTop: position
-	} /* speed */ );
+		$("body, html").animate({
+			scrollTop: position
+		} /* speed */ );
+	});
+	//--prev button and scroll-to 
+	$("button #prev").click(function(e) {
+		e.preventDefault();
+		
+		var position = $('div.page').prev();
+
+		$("body, html").animate({
+			scrollTop: position
+		} /* speed */ );
 	});
 
 }
