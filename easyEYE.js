@@ -2,14 +2,14 @@
 // @name         easyEye
 // @namespace    http://tampermonkey.net/
 // @updateURL	 https://github.com/zimorok/myTamperMonkey/raw/master/easyEYE.js
-// @version      0.1.12
+// @version      0.1.12.1
 // @description  Read your web novel easily on mobile with paginated content
 // @author       Zimorok
 // @match        *://boxnovel.com/*
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js
 // @grant        GM_addStyle
 // ==/UserScript==
-GM_addStyle("#nav{float:right;");
+GM_addStyle("#nav{}");
 var $ = window.jQuery
 $(document).ready(function() {
     'use strict';
