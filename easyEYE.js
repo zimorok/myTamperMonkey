@@ -53,12 +53,12 @@ function paginate() {
 
 	//--to next page 
 	$(".next").click(function() {
-       $('html,body').animate({ scrollTop:$(this).parent().next().offset().top}, 'slow');
+       $('html,body').animate({ scrollTop:$(this).parent().next().offset().top}, 'fast');
 
 	});
 	//--to previous page 
 	$(".prev").click(function() {
-       $('html,body').animate({ scrollTop:$(this).parent().prev().offset().top}, 'slow');
+       $('html,body').animate({ scrollTop:$(this).parent().prev().offset().top}, 'fast');
 
 	});
 
