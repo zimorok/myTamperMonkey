@@ -2,7 +2,7 @@
 // @name         easyEye
 // @namespace    http://tampermonkey.net/
 // @updateURL	 https://github.com/zimorok/myTamperMonkey/raw/master/easyEYE.js
-// @version      0.1.8
+// @version      0.1.10
 // @description  Read your web novel easily on mobile with paginated content
 // @author       Zimorok
 // @match        *://boxnovel.com/*
@@ -26,7 +26,7 @@ $(document).ready(function() {
 var contentBox = $('div.text-left');
 var words = contentBox.html().split(' ');
 function paginate() {
-    var newPage = $('<div class="page">').css({'border':'1px solid black','text-align':'justify','padding':'5px','margin-bottom':'30px'});
+    var newPage = $('<div class="page">').css({'text-align':'justify'});
     contentBox.empty().append(newPage);
     var pageText = null;
     for(var i = 0; i < words.length; i++) {
@@ -48,28 +48,18 @@ function paginate() {
 
 	//--creating next/previous button
 	//--append the next/previous button to <body>
-	var nav = '<div id="nav"><div class="subs"><button href="#prev">&laquo; Prev</button><button href="#next">Next &raquo;</button></div></div>';
-	$('#story').append(nav);
+	var nav = '<button href="#next" class="next"> &laquo; Previous Page</button>&nbsp;<button href="#next" class="next"> Next Page &raquo;</button>';
+	$('div.page').prepend(nav);
 
-	//--next button and scroll-to 
-	$("button #next").click(function(e) {
-		e.preventDefault();
-		
-		var position = $('div.page').next();
+	//--to next page 
+	$(".next").click(function() {
+       $('html,body').animate({ scrollTop:$(this).parent().next().offset().top}, 'slow');
 
-		$("body, html").animate({
-			scrollTop: position
-		} /* speed */ );
 	});
-	//--prev button and scroll-to 
-	$("button #prev").click(function(e) {
-		e.preventDefault();
-		
-		var position = $('div.page').prev();
+	//--to previous page 
+	$(".prev").click(function() {
+       $('html,body').animate({ scrollTop:$(this).parent().prev().offset().top}, 'slow');
 
-		$("body, html").animate({
-			scrollTop: position
-		} /* speed */ );
 	});
 
 }
