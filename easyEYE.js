@@ -9,7 +9,7 @@
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js
 // @grant        GM_addStyle
 // ==/UserScript==
-GM_addStyle("#nav{width:100%;text-align:center;margin:0 auto;position:fixed;bottom:0;left:0;right:0}.subs{background-color:green}.subs button{height:30px}");
+GM_addStyle("#nav{float:right;");
 var $ = window.jQuery
 $(document).ready(function() {
     'use strict';
@@ -26,7 +26,7 @@ $(document).ready(function() {
 var contentBox = $('div.text-left');
 var words = contentBox.html().split(' ');
 function paginate() {
-    var newPage = $('<div class="page">').css({'text-align':'justify','margin':'0 auto'});
+    var newPage = $('<div class="page">').css({'text-align':'justify'});
     contentBox.empty().append(newPage);
     var pageText = null;
     for(var i = 0; i < words.length; i++) {
@@ -48,7 +48,7 @@ function paginate() {
 
 	//--creating next/previous button
 	//--append the next/previous button to <body>
-	var nav = '<button href="#next" class="prev"> &laquo; Previous Page</button>&nbsp;<button href="#next" class="next"> Next Page &raquo;</button>';
+	var nav = '<div id="nav"><button href="#next" class="prev"> &laquo; Previous Page</button>&nbsp;<button href="#next" class="next"> Next Page &raquo;</button></div>';
 	$('div.page').prepend(nav);
 
 	//--to next page 
