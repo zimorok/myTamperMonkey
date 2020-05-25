@@ -48,7 +48,7 @@ function paginate() {
 
 	//--creating next/previous button
 	//--append the next/previous button to <body>
-	var nav = '<button href="#next" class="next"> &laquo; Previous Page</button>&nbsp;<button href="#next" class="prev"> Next Page &raquo;</button>';
+	var nav = '<button href="#next" class="prev"> &laquo; Previous Page</button>&nbsp;<button href="#next" class="next"> Next Page &raquo;</button>';
 	$('div.page').prepend(nav);
 
 	//--to next page 
