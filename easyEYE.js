@@ -1,6 +1,7 @@
 // ==UserScript==
 // @name         easyEye
 // @namespace    http://tampermonkey.net/
+// @updateURL	 https://github.com/zimorok/myTamperMonkey/raw/master/easyEYE.js
 // @version      0.1.2
 // @description  Read your web novel easily on mobile with paginated content
 // @author       Zimorok
